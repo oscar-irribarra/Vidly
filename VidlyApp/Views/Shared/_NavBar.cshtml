@@ -1,0 +1,20 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    @Html.ActionLink("VidlyAPP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand nav-link" })
+
+    <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            @*<li class="nav-item active">@Html.ActionLink("Inicio", "Index", "Home", new { id = 1, nombre = "vidly" }, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Acerca de", "About", "Home", null, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Contacto", "Contact", "Home", null, new { @class = "nav-link" })</li>*@
+            <li class="nav-item">@Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Movies", "Index", "Movies", null, new { @class = "nav-link" })</li>
+        </ul>
+        @Html.Partial("_LoginPartial")
+    </div>
+</nav>
+
