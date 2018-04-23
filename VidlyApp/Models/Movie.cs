@@ -8,6 +8,11 @@ namespace VidlyApp.Models
 {
     public class Movie
     {
+        public Movie()
+        {
+            DateAdded = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         [Required, StringLength(255)]
@@ -18,12 +23,12 @@ namespace VidlyApp.Models
 
         public DateTime DateAdded { get; set; }
 
-        [Display(Name ="Number In Stock")]
+        [Display(Name ="Number In Stock"), Range(1,20)]
         public byte NumberInStock { get; set; }
 
         public Genre Genre { get; set; }
 
-        [Required, Display(Name = "Genre")]
+        [Display(Name = "Genre")]
         public byte GenreId { get; set; }
     }
 }
