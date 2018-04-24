@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using VidlyApp.Dtos;
 
 namespace VidlyApp.Models
 {
@@ -12,16 +13,17 @@ namespace VidlyApp.Models
         {
             var customer = (Customer)validationContext.ObjectInstance;
 
-            if (customer.MembershipTypeId == MembershipType.Unknown || 
+            if (customer.MembershipTypeId == MembershipType.Unknown ||
                 customer.MembershipTypeId == MembershipType.PayAsYouGo)
                 return ValidationResult.Success;
 
             if (customer.Birthdate == null)
                 return new ValidationResult("Birthdate is required");
 
-            return ((DateTime.Today.Year - customer.Birthdate.Value.Year) < 18)
-                ? ValidationResult.Success 
-                : new ValidationResult("Customer should be at least 18 years old to Go a Membership");            
+            return ((DateTime.Today.Year - customer.Birthdate.Value.Year) >= 18)
+                ? ValidationResult.Success
+                : new ValidationResult("Customer should be at least 18 years old to Go a Membership");
+
         }
     }
 }

@@ -20,7 +20,10 @@ namespace VidlyApp.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            _context.Dispose();
+            if(disposing)
+                _context.Dispose();
+
+            base.Dispose(disposing);
         }
 
         public ActionResult Index()
@@ -78,7 +81,6 @@ namespace VidlyApp.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes,
-                Customer = new Customer()
             };
 
             return View("CustomerForm", viewModel);

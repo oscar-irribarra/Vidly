@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
+<h2>@Model.Title</h2>
 @using (Html.BeginForm("Save", "Customers"))
 {
     @Html.ValidationSummary(true, "!Please fix the following errors")
@@ -29,7 +29,8 @@
             Subscribed to Newsletter
         </label>
     </div>
-    @Html.HiddenFor(x => x.Customer.Id)
+    @Html.Hidden("Customer.Id", (Model.Customer != null) ? Model.Customer.Id : 0)
+    @*@Html.HiddenFor(x => x.Customer.Id)*@
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 }

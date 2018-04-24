@@ -21,7 +21,10 @@ namespace VidlyApp.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            _context.Dispose();
+            if (disposing)
+                _context.Dispose();
+
+            base.Dispose(disposing);
         }
 
         public ActionResult Index()
@@ -55,7 +58,6 @@ namespace VidlyApp.Controllers
                 
             if (movie.Id == 0)
             {
-                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
             }
             else
@@ -78,7 +80,6 @@ namespace VidlyApp.Controllers
             var viewModel = new MovieFormViewModel
             {
                 Genres = _context.Genres.ToList(),
-                Movie = new Movie()
             };
 
             return View("MovieForm", viewModel);

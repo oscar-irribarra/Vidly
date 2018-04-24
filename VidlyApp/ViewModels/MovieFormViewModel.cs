@@ -9,16 +9,14 @@ namespace VidlyApp.ViewModels
     public class MovieFormViewModel
     {
         public IEnumerable<Genre> Genres { get; set; }
+
         public Movie Movie { get; set; }
         
         public string Title
         {
             get
             {
-                if (Movie.Id != 0)
-                    return "Edit Movie";
-
-                return "New Movie";
+                return (Movie != null) ? "Edit Movie" : "New Movie";
             }
         }
     }
